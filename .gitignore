@@ -1,0 +1,11 @@
+ext/
+build/
+eigen-f32-single-thread/build/
+eigen-f32-single-thread/reports/
+eigen-f32-single-thread/reports-*/
+eigen-f32-multi-thread/build/
+eigen-f32-multi-thread/reports/
+eigen-f32-multi-thread/reports-*/
+__pycache__/
+*.pyc
+.DS_Store

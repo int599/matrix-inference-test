@@ -1,0 +1,53 @@
+{
+  "suite": "multi-thread",
+  "cpu_model": "Intel(R) Xeon(R) E E-2488",
+  "cpu_slug": "intel-xeon-e-e-2488",
+  "physical_core_count": 8,
+  "logical_cpu_count": 16,
+  "has_smt": true,
+  "compiler_default": {
+    "march": "x86-64-v2",
+    "mtune": "generic",
+    "simd_level": "SSE4.2"
+  },
+  "benchmark": {
+    "matrix_shape": "256x256",
+    "dtype": "float32",
+    "rng_seed": 20260323,
+    "total_loop_count": 105,
+    "warmup_iterations": 5,
+    "measured_iterations": 100,
+    "repeat_count": 3,
+    "thread_counts": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "binding_policy": "Fill physical cores first, then extend to SMT sibling CPUs only when participant count exceeds physical-core count."
+  },
+  "csv_filename": "thread-scaling-data-intel-xeon-e-e-2488.csv",
+  "simd_modes": [
+    {
+      "name": "scalar",
+      "display_label": "SCALAR",
+      "definition": "SCALAR disables Eigen vectorization, compiler tree vectorization, and AVX-family targets."
+    },
+    {
+      "name": "sse42",
+      "display_label": "SSE4.2",
+      "definition": "SSE4.2 uses explicit -msse4.2 and disables AVX-family targets."
+    },
+    {
+      "name": "avx",
+      "display_label": "AVX",
+      "definition": "AVX uses explicit AVX1 (-mavx) with avx2, fma, and avx512* disabled."
+    },
+    {
+      "name": "avx2",
+      "display_label": "AVX2",
+      "definition": "AVX2 uses explicit -mavx2 -mfma."
+    }
+  ]
+}
